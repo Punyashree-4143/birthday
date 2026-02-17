@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday 🎂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #0f0f1a, #1a1a2e);
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Scroll snap */
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    scroll-snap-align: start;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Photo styling */
+.photo {
+    width: 45%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateX(-150px) scale(0.95);
+    transition: all 1.2s ease;
+}
+
+.reverse .photo {
+    transform: translateX(150px) scale(0.95);
+}
+
+/* Text styling */
+.text {
+    width: 45%;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s ease 0.4s;
+}
+
+.text p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.show .photo {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.show .text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Intro */
+.intro {
+    text-align: center;
+}
+
+.intro h1 {
+    font-size: 3.5rem;
+    text-shadow: 0 0 20px #ff4da6, 0 0 40px #ff85c1;
+}
+
+.intro p {
+    margin-top: 20px;
+    font-size: 1.4rem;
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0.9; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* Final */
+.final {
+    background: linear-gradient(135deg, #b5179e, #f72585);
+    text-align: center;
+}
+
+.final h1 {
+    font-size: 4rem;
+    text-shadow: 0 0 30px white;
+}
+
+.final p {
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Intro -->
+<section class="section intro">
+    <div>
+        <h1>Happy Birthday Pooja 💖</h1>
+        <p>
+            
+            May your smile never fade, <br>
+            and may every dream find its way to you ✨ <br><br>
+            Scroll down
+        </p>
+    </div>
+</section>
+
+<!-- 25 Photo Sections -->
+<script>
+
+const messages = [
+"07-02-2026 — Lulu Mall 🛍️✨ The day we searched for the birthday dress,tried a many options, laughed at the wrong ones, and finally found the one💖",
+"Back to our BCA days 📚✨ This was taken in our classroom — where lectures felt long, but memories were made effortlessly 💕",
+"This was taken when we were celebrating Black color day in Japan Park",
+"You always show up when it truly matters 💕",
+"You are so lucky to get me as your friend 😉 ",
+"This one , when me , you and Ranjitha bought same top for our twinning day",
+"You truly value relationships 🤍",
+"You make friendships feel easy and real ✨",
+"This one when we went to Himavad Gopalaswamy Hills during Suchitra's birthday without her and got scolded my watchman uncle 💕",
+"You hold people together🌷",
+"This one when we went to Honnavara Trip , during boat ride 💖",
+"This one during our last Ethnic day",
+"You deserve the best in everything, like me 😉",
+"This one when we went to Mall of Mysore like few days before my birthday and you gave a handmade card to me , i as usual craeted some issues",
+"This one was taken during Mysore Dasara , in the Flower show in 2024😊",
+"🤍",
+"I think this one was taken , when we met in Bangalore for the first time after coming from Mysore",
+"You always try your best for everyone 🌸",
+"This photo was taken by me on your birthday at Lulu Mall",
+"🤍",
+"This one , your fav saree of mine and it suited very well on you✨",
+"This one was taken when we went to MAD 2 movies along with Ranjitha and Jeevitha at Jayanagar💕",
+"This one was taken when we were going to Mysore for Dasara from Bangalore - 2025🌸",
+"Your Fav Gang",
+"💖"
+];
+
+for(let i=1;i<=25;i++){
+    let reverseClass = i % 2 === 0 ? "reverse" : "";
+
+    document.write(`
+    <section class="section">
+        <div class="container ${reverseClass}">
+            <img src="p${i}.jpeg" class="photo">
+            <div class="text">
+                <p>${messages[i-1]}</p>
+            </div>
+        </div>
+    </section>
+    `);
+}
+
+</script>
+
+<!-- Final Section -->
+<section class="section final">
+    <div>
+        <h1>HAPPY BIRTHDAY🤍</h1>
+        <p>
+            May this year bring you endless happiness,  
+            success, and beautiful memories 💕
+        </p>
+    </div>
+</section>
+
+<!-- Reveal Animation -->
+<script>
+const sections = document.querySelectorAll('.section');
+
+function revealOnScroll() {
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+            section.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
+
+<!-- Floating Hearts -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
