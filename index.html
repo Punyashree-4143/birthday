@@ -19,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Scroll snap */
 html {
     scroll-snap-type: y mandatory;
 }
@@ -46,7 +45,6 @@ html {
     flex-direction: row-reverse;
 }
 
-/* Photo styling */
 .photo {
     width: 45%;
     height: 450px;
@@ -62,7 +60,6 @@ html {
     transform: translateX(150px) scale(0.95);
 }
 
-/* Text styling */
 .text {
     width: 45%;
     opacity: 0;
@@ -72,7 +69,7 @@ html {
 
 .text p {
     font-size: 1.4rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .show .photo {
@@ -85,7 +82,6 @@ html {
     transform: translateY(0);
 }
 
-/* Intro */
 .intro {
     text-align: center;
 }
@@ -100,22 +96,6 @@ html {
     font-size: 1.4rem;
 }
 
-/* Floating Hearts */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 20px;
-    animation: floatUp 6s linear infinite;
-    opacity: 0.8;
-    pointer-events: none;
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity: 0.9; }
-    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
-}
-
-/* Final */
 .final {
     background: linear-gradient(135deg, #b5179e, #f72585);
     text-align: center;
@@ -130,12 +110,9 @@ html {
     font-size: 1.4rem;
     margin-top: 20px;
 }
-/* ========================= */
-/* MOBILE RESPONSIVE FIX */
-/* ========================= */
 
+/* Mobile */
 @media (max-width: 768px) {
-
     .container {
         flex-direction: column !important;
         gap: 30px;
@@ -149,17 +126,13 @@ html {
     .text {
         width: 100%;
         text-align: center;
-        transform: translateY(40px);
     }
 
     .text p {
         font-size: 1.1rem;
     }
 
-    .intro h1 {
-        font-size: 2.5rem;
-    }
-
+    .intro h1,
     .final h1 {
         font-size: 2.5rem;
     }
@@ -168,7 +141,6 @@ html {
         padding: 40px 20px;
     }
 }
-
 </style>
 </head>
 
@@ -179,43 +151,67 @@ html {
     <div>
         <h1>Happy Birthday Pooja 💖</h1>
         <p>
-            
             May your smile never fade, <br>
             and may every dream find its way to you ✨ <br><br>
-            Scroll down
+            Scroll down to relive our beautiful memories 🌸
         </p>
     </div>
 </section>
 
-<!-- 25 Photo Sections -->
 <script>
 
 const messages = [
-"07-02-2026 — Lulu Mall 🛍️✨ The day we searched for the birthday dress,tried a many options, laughed at the wrong ones, and finally found the one💖",
-"Back to our BCA days 📚✨ This was taken in our classroom — where lectures felt long, but memories were made effortlessly 💕",
-"This was taken when we were celebrating Black color day in Japan Park",
+
+"07-02-2026 — Lulu Mall 🛍️✨ The birthday dress hunt! So many trials, so much confusion, endless laughter… and finally, the perfect one 💖",
+
+"Our BCA classroom days 📚✨ Long lectures, random laughs, and memories we didn’t know would become so special 💕",
+
+"Black Color Day at Japan Park 🖤 A simple day that turned into a core memory.",
+
 "You always show up when it truly matters 💕",
-"You are so lucky to get me as your friend 😉 ",
-"This one , when me , you and Ranjitha bought same top for our twinning day",
-"You truly value relationships 🤍",
-"You make friendships feel easy and real ✨",
-"This one when we went to Himavad Gopalaswamy Hills during Suchitra's birthday without her and got scolded my watchman uncle 💕",
-"You hold people together🌷",
-"This one when we went to Honnavara Trip , during boat ride 💖",
-"This one during our last Ethnic day",
-"You deserve the best in everything, like me 😉",
-"This one when we went to Mall of Mysore like few days before my birthday and you gave a handmade card to me , i as usual craeted some issues",
-"This one was taken during Mysore Dasara , in the Flower show in 2024😊",
-"🤍",
-"I think this one was taken , when we met in Bangalore for the first time after coming from Mysore",
+
+"You’re honestly lucky to have me as your friend 😉✨",
+
+"Our twinning day — when you, me, and Ranjitha bought the same top and felt unstoppable 😌💖",
+
+"You truly value relationships 🤍 and it shows in everything you do.",
+
+"You make friendships feel easy, real, and effortless ✨",
+
+"Himavad Gopalaswamy Hills during Suchitra’s birthday — we went without her and got scolded by the watchman uncle 😂💖",
+
+"You hold people together more than you realize 🌷",
+
+"Honnavara trip — that peaceful boat ride we’ll never forget 💖",
+
+"Our last Ethnic Day together — bittersweet and beautiful ✨",
+
+"You deserve the best in everything… especially friends like me 😉",
+
+"Mall of Mysore — just before my birthday. Your handmade card meant more than you know… even though I created drama as usual 😌💌",
+
+"Mysore Dasara 2024 — the Flower Show 🌸✨ Colors everywhere, but you still stood out.",
+
+"That day in Bangalore when we met after coming from Mysore — it felt like nothing had changed 💕",
+
 "You always try your best for everyone 🌸",
-"This photo was taken by me on your birthday at Lulu Mall",
-"🤍",
-"This one , your fav saree of mine and it suited very well on you✨",
-"This one was taken when we went to MAD 2 movies along with Ranjitha and Jeevitha at Jayanagar💕",
-"This one was taken when we were going to Mysore for Dasara from Bangalore - 2025🌸",
-"Your Fav Gang",
-"💖"
+
+"This photo was taken by me on your birthday at Lulu Mall — one of my favorite captures 💖",
+
+"Your favorite saree of mine — and honestly, it suited you so beautifully ✨",
+
+"MAD 2 movie day with Ranjitha and Jeevitha at Jayanagar 🎬💕 Chaos, laughs, and snacks.",
+
+"The Mysore Dasara trip from Bangalore — 2025 🌸 Another journey, another memory.",
+
+"Our little gang moments — forever iconic 💖",
+
+"You bring warmth wherever you go ☀️",
+
+"You make ordinary days feel special ✨",
+
+"And through all these memories… I’m just grateful we found each other 💕"
+
 ];
 
 for(let i=1;i<=25;i++){
@@ -235,18 +231,16 @@ for(let i=1;i<=25;i++){
 
 </script>
 
-<!-- Final Section -->
 <section class="section final">
     <div>
-        <h1>HAPPY BIRTHDAY🤍</h1>
+        <h1>HAPPY BIRTHDAY 🤍</h1>
         <p>
             May this year bring you endless happiness,  
-            success, and beautiful memories 💕
+            success, growth, and moments that make your heart full 💕
         </p>
     </div>
 </section>
 
-<!-- Reveal Animation -->
 <script>
 const sections = document.querySelectorAll('.section');
 
@@ -261,25 +255,6 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 revealOnScroll();
-</script>
-
-<!-- Floating Hearts -->
-<script>
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}
-
-setInterval(createHeart, 400);
 </script>
 
 </body>
