@@ -45,12 +45,11 @@ width:100%;
 flex-direction:row-reverse;
 }
 
-/* PHOTO */
+/* PHOTO - UNIFORM SIZE */
 .photo{
 width:45%;
-max-height:80vh;
-object-fit:contain;
-background:black;
+height:500px;
+object-fit:cover;
 border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.6);
 opacity:0;
@@ -120,16 +119,15 @@ scroll-snap-align:start;
 
 .hostel-title{
 position:absolute;
-top:40px;
+top:30px;
 width:100%;
 text-align:center;
-color:black;
 z-index:2;
 }
 
 .hostel-title h1{
 font-size:2.8rem;
-letter-spacing:2px;
+color:black;
 opacity:0;
 animation:fadeIn 1.5s forwards;
 }
@@ -155,7 +153,8 @@ background:#dfe4ea;
 .luggage{
 position:absolute;
 bottom:100px;
-left:260px;
+left:50%;
+transform:translateX(-50%);
 font-size:60px;
 }
 
@@ -169,7 +168,7 @@ font-size:70px;
 .girl-stand{
 position:absolute;
 bottom:100px;
-right:120px;
+right:80px;
 font-size:70px;
 opacity:0;
 }
@@ -182,14 +181,13 @@ padding:10px 15px;
 border-radius:20px;
 font-size:14px;
 opacity:0;
+max-width:60%;
 }
 
-.d1{top:60px;right:100px;}
-.d2{top:120px;left:80px;}
-.d3{top:180px;right:120px;}
-.d4{top:240px;left:90px;}
-
-/* ANIMATION WHEN ACTIVE */
+.d1{top:60px;right:60px;}
+.d2{top:110px;left:60px;}
+.d3{top:160px;right:60px;}
+.d4{top:210px;left:60px;}
 
 .hostel-section.active .girl-enter{
 animation:walkIn 3s forwards, moveToBag 2s forwards 12s;
@@ -199,36 +197,25 @@ animation:walkIn 3s forwards, moveToBag 2s forwards 12s;
 animation:fadeIn 1s forwards 3s;
 }
 
-.hostel-section.active .d1{
-animation:fadeIn 1s forwards 4s;
-}
-
-.hostel-section.active .d2{
-animation:fadeIn 1s forwards 6s;
-}
-
-.hostel-section.active .d3{
-animation:fadeIn 1s forwards 8s;
-}
-
-.hostel-section.active .d4{
-animation:fadeIn 1s forwards 10s;
-}
+.hostel-section.active .d1{animation:fadeIn 1s forwards 4s;}
+.hostel-section.active .d2{animation:fadeIn 1s forwards 6s;}
+.hostel-section.active .d3{animation:fadeIn 1s forwards 8s;}
+.hostel-section.active .d4{animation:fadeIn 1s forwards 10s;}
 
 @keyframes walkIn{
-to{left:150px;}
+to{left:25%;}
 }
 
 @keyframes moveToBag{
-from{left:150px;}
-to{left:240px;}
+from{left:25%;}
+to{left:45%;}
 }
 
 @keyframes fadeIn{
 to{opacity:1;}
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media(max-width:768px){
 
 .container{
@@ -238,7 +225,8 @@ gap:30px;
 
 .photo{
 width:100%;
-max-height:75vh;
+height:380px;
+object-fit:cover;
 }
 
 .text{
@@ -251,17 +239,27 @@ padding:40px 20px;
 }
 
 .room{
-height:380px;
+height:420px;
 }
 
-.girl-enter,.girl-stand{
+.girl-enter{
 font-size:50px;
+left:-80px;
+}
+
+.girl-stand{
+font-size:50px;
+right:20px;
 }
 
 .luggage{
 font-size:40px;
-left:180px;
 }
+
+.d1{top:40px;right:20px;}
+.d2{top:90px;left:20px;}
+.d3{top:140px;right:20px;}
+.d4{top:190px;left:20px;}
 
 .hostel-title h1{
 font-size:1.8rem;
