@@ -1,111 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>Happy Birthday 🎂</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+:root {
+    --bg-dark: #05050a;
+    --accent: #ff758c;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.12);
 }
 
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(180deg,#0f0f1a,#1a1a2e);
-color:white;
-scroll-behavior:smooth;
-overflow-x:hidden;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-scroll-snap-type:y mandatory;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
-.section{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:60px;
-scroll-snap-align:start;
+html {
+    scroll-snap-type: y mandatory;
 }
 
-.container{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:60px;
-max-width:1200px;
-width:100%;
+/* ================= GENERAL SECTIONS ================= */
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    scroll-snap-align: start;
+    background: radial-gradient(circle at 50% 50%, #15152d 0%, #05050a 100%);
 }
 
-.reverse{
-flex-direction:row-reverse;
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
 }
 
-/* PHOTO - UNIFORM SIZE */
-.photo{
-width:45%;
-height:500px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
-opacity:0;
-transform:translateX(-150px) scale(0.95);
-transition:all 1.2s ease;
+.reverse {
+    flex-direction: row-reverse;
 }
 
-.reverse .photo{
-transform:translateX(150px) scale(0.95);
+/* ================= POLAROID STYLE ================= */
+
+.photo-frame {
+    width: 45%;
+    padding: 15px 15px 60px 15px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+    opacity: 0;
+    transition: all 1.2s ease;
+    transform: translateX(-120px) rotate(3deg);
 }
 
-.text{
-width:45%;
-opacity:0;
-transform:translateY(60px);
-transition:all 1.2s ease 0.4s;
+.reverse .photo-frame {
+    transform: translateX(120px) rotate(-3deg);
 }
 
-.text p{
-font-size:1.3rem;
-line-height:1.8;
-white-space:pre-line;
+.photo {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
 }
 
-.show .photo{
-opacity:1;
-transform:translateX(0) scale(1);
+.full-photo {
+    object-fit: contain;
+    background: black;
 }
 
-.show .text{
-opacity:1;
-transform:translateY(0);
+.section.show .photo-frame {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
 }
 
-/* INTRO */
-.intro{text-align:center;}
-.intro h1{
-font-size:3.5rem;
-text-shadow:0 0 20px #ff4da6,0 0 40px #ff85c1;
-}
-.intro p{
-margin-top:20px;
-font-size:1.4rem;
+/* ================= GLASS TEXT ================= */
+
+.text {
+    width: 45%;
+    padding: 40px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease 0.3s;
 }
 
-/* FINAL */
-.final{
-background:linear-gradient(135deg,#b5179e,#f72585);
-text-align:center;
-}
-.final h1{
-font-size:3rem;
-text-shadow:0 0 30px white;
+.section.show .text {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* ================= HOSTEL STORY ================= */
+.text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* ================= TITLES ================= */
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    text-align: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================= INTRO ================= */
+
+.intro {
+    text-align: center;
+}
+
+/* ================= FINAL ================= */
+
+.final {
+    text-align: center;
+    background: linear-gradient(135deg,#b5179e,#f72585);
+}
+
+/* ===================================================== */
+/* =============== WORKING HOSTEL SECTION =============== */
+/* ===================================================== */
 
 .hostel-section{
 height:100vh;
@@ -127,7 +159,8 @@ z-index:2;
 
 .hostel-title h1{
 font-size:2.8rem;
-color:black;
+color:white;
+text-shadow:0 0 20px #ff4da6;
 opacity:0;
 animation:fadeIn 1.5s forwards;
 }
@@ -182,6 +215,7 @@ border-radius:20px;
 font-size:14px;
 opacity:0;
 max-width:60%;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
 .d1{top:60px;right:60px;}
@@ -215,7 +249,8 @@ to{left:45%;}
 to{opacity:1;}
 }
 
-/* MOBILE FIX */
+/* ================= MOBILE ================= */
+
 @media(max-width:768px){
 
 .container{
@@ -223,15 +258,13 @@ flex-direction:column!important;
 gap:30px;
 }
 
-.photo{
-width:100%;
-height:380px;
-object-fit:cover;
-}
-
+.photo-frame,
 .text{
 width:100%;
-text-align:center;
+}
+
+.photo{
+height:350px;
 }
 
 .section{
@@ -271,19 +304,13 @@ font-size:1.8rem;
 
 <body>
 
-<!-- INTRO -->
 <section class="section intro">
 <div>
-<h1>Happy Birthday Pooja 💖</h1>
-<p>
-May your smile never fade,<br>
-and may every dream find its way to you ✨<br><br>
-Scroll down
-</p>
+<h1>Happy Birthday Pooja 🤍</h1>
+<p>A Scrollable Journey of Us</p>
 </div>
 </section>
 
-<!-- PHOTO SECTIONS -->
 <script>
 const messages=[
 "07-02-2026 — Lulu Mall 🛍️✨ The day we searched for the birthday dress,tried a many options, laughed at the wrong ones, and finally found the one💖",
@@ -315,10 +342,14 @@ const messages=[
 
 for(let i=1;i<=25;i++){
 let reverseClass=i%2===0?"reverse":"";
+let specialClass=(i===24||i===25)?"full-photo":"";
+
 document.write(`
 <section class="section">
 <div class="container ${reverseClass}">
-<img src="p${i}.jpeg" class="photo">
+<div class="photo-frame">
+<img src="p${i}.jpeg" class="photo ${specialClass}">
+</div>
 <div class="text"><p>${messages[i-1]}</p></div>
 </div>
 </section>
@@ -326,7 +357,6 @@ document.write(`
 }
 </script>
 
-<!-- HOSTEL STORY -->
 <section class="hostel-section">
 <div class="hostel-title">
 <h1>How this started</h1>
@@ -334,9 +364,7 @@ document.write(`
 
 <div class="room">
 <div class="floor"></div>
-
 <div class="luggage">🧳</div>
-
 <div class="girl-enter">👩‍🦰</div>
 <div class="girl-stand">👩</div>
 
@@ -344,15 +372,13 @@ document.write(`
 <div class="dialogue d2">hu…</div>
 <div class="dialogue d3">naanu BCA ne Pratheeksha akka helidru obru bartare nan friend tangi anta so kelde neeve na anta</div>
 <div class="dialogue d4">hwda sari…</div>
-
 </div>
 </section>
 
-<!-- FINAL -->
 <section class="section final">
 <div>
-<h1>HAPPY BIRTHDAY 🤍</h1>
-<p>May this year bring you endless happiness, success, and beautiful memories 💕</p>
+<h1>Happy Birthday 🤍</h1>
+<p>May this year bring you endless happiness 💕</p>
 </div>
 </section>
 
