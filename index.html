@@ -1,349 +1,324 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Happy Birthday 🎂</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root {
-    --bg-dark: #05050a;
-    --accent: #ff758c;
-    --glass: rgba(255, 255, 255, 0.05);
-    --border: rgba(255, 255, 255, 0.12);
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(180deg,#0f0f1a,#1a1a2e);
+color:white;
+scroll-behavior:smooth;
+overflow-x:hidden;
 }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: var(--bg-dark);
-    color: white;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+html{
+scroll-snap-type:y mandatory;
 }
 
-html {
-    scroll-snap-type: y mandatory;
+.section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:60px;
+scroll-snap-align:start;
 }
 
-/* Sparkle Trail */
-.sparkle {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: all 0.5s ease;
+.container{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:60px;
+max-width:1200px;
+width:100%;
 }
 
-/* Sections */
-.section, .hostel-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    scroll-snap-align: start;
-    position: relative;
+.reverse{
+flex-direction:row-reverse;
 }
 
-.section {
-    background: radial-gradient(circle at 50% 50%, #15152d 0%, #05050a 100%);
+/* PHOTO - UNIFORM SIZE */
+.photo{
+width:45%;
+height:500px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+opacity:0;
+transform:translateX(-150px) scale(0.95);
+transition:all 1.2s ease;
 }
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    max-width: 1200px;
-    width: 100%;
+.reverse .photo{
+transform:translateX(150px) scale(0.95);
 }
 
-.reverse { flex-direction: row-reverse; }
-
-/* Polaroid Style */
-.photo-frame {
-    width: 45%;
-    padding: 15px 15px 60px 15px;
-    background: white;
-    border-radius: 4px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.text{
+width:45%;
+opacity:0;
+transform:translateY(60px);
+transition:all 1.2s ease 0.4s;
 }
 
-.photo-frame:nth-child(even) { transform: rotate(-3deg) translateX(-50px); }
-.photo-frame:nth-child(odd) { transform: rotate(3deg) translateX(-50px); }
-
-.photo {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    filter: sepia(20%) contrast(110%);
+.text p{
+font-size:1.3rem;
+line-height:1.8;
+white-space:pre-line;
 }
 
-.full-photo { object-fit: contain; background: #000; }
-
-.section.show .photo-frame {
-    opacity: 1;
-    transform: rotate(0deg) translateX(0);
+.show .photo{
+opacity:1;
+transform:translateX(0) scale(1);
 }
 
-/* Glass Text */
-.text {
-    width: 45%;
-    padding: 40px;
-    background: var(--glass);
-    backdrop-filter: blur(15px);
-    border-radius: 30px;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease 0.3s;
+.show .text{
+opacity:1;
+transform:translateY(0);
 }
 
-.text p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    font-weight: 300;
-    color: #f0f0f0;
+/* INTRO */
+.intro{text-align:center;}
+.intro h1{
+font-size:3.5rem;
+text-shadow:0 0 20px #ff4da6,0 0 40px #ff85c1;
+}
+.intro p{
+margin-top:20px;
+font-size:1.4rem;
 }
 
-.section.show .text {
-    opacity: 1;
-    transform: translateY(0);
+/* FINAL */
+.final{
+background:linear-gradient(135deg,#b5179e,#f72585);
+text-align:center;
+}
+.final h1{
+font-size:3rem;
+text-shadow:0 0 30px white;
 }
 
-/* Titles */
-h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 800;
-    text-align: center;
-    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 5px 15px rgba(255,117,140,0.3));
+/* ================= HOSTEL STORY ================= */
+
+.hostel-section{
+height:100vh;
+background:linear-gradient(to top,#2c2c54,#1e1e3f);
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+scroll-snap-align:start;
 }
 
-/* ================= HOSTEL SECTION ================= */
-
-.hostel-section {
-    background: #0a0a15;
+.hostel-title{
+position:absolute;
+top:30px;
+width:100%;
+text-align:center;
+z-index:2;
 }
 
-.hostel-heading {
-    position: absolute;
-    top: 40px;
-    width: 100%;
-    text-align: center;
-    z-index: 20;
-    opacity: 0;
-    transition: opacity 1s ease;
-    -webkit-text-fill-color: #ff7eb3;
-    color: #ff7eb3;
+.hostel-title h1{
+font-size:2.8rem;
+color:black;
+opacity:0;
+animation:fadeIn 1.5s forwards;
 }
 
-.room {
-    width: 95%;
-    max-width: 850px;
-    height: 500px;
-    background: #fff;
-    border-radius: 40px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.1), 0 50px 100px rgba(0,0,0,0.5);
-    margin-top: 80px;
+.room{
+width:90%;
+max-width:900px;
+height:500px;
+background:#f8f9fa;
+border-radius:20px;
+position:relative;
+overflow:hidden;
 }
 
-/* Floor */
-.floor {
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:100px;
-    background:#e9ecef;
+.floor{
+position:absolute;
+bottom:0;
+width:100%;
+height:100px;
+background:#dfe4ea;
 }
 
-/* Emojis */
-.luggage {
-    position:absolute;
-    bottom:100px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:60px;
+.luggage{
+position:absolute;
+bottom:100px;
+left:50%;
+transform:translateX(-50%);
+font-size:60px;
 }
 
-.girl-enter {
-    position:absolute;
-    bottom:100px;
-    left:-120px;
-    font-size:70px;
-    transition: left 3s ease;
+.girl-enter{
+position:absolute;
+bottom:100px;
+left:-120px;
+font-size:70px;
 }
 
-.girl-stand {
-    position:absolute;
-    bottom:100px;
-    right:80px;
-    font-size:70px;
-    opacity:0;
-    transition: opacity 1s ease 3s;
+.girl-stand{
+position:absolute;
+bottom:100px;
+right:80px;
+font-size:70px;
+opacity:0;
 }
 
-/* Dialogues */
-.dialogue {
-    position:absolute;
-    background:#f0f2f5;
-    color:#1c1e21;
-    padding:14px 22px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:500;
-    opacity:0;
-    max-width:60%;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    transition:opacity 0.8s ease;
+.dialogue{
+position:absolute;
+background:white;
+color:black;
+padding:10px 15px;
+border-radius:20px;
+font-size:14px;
+opacity:0;
+max-width:60%;
 }
 
-.d1 { top:40px; right:30px; background:#0084ff; color:white; }
-.d2 { top:110px; left:30px; }
-.d3 { top:190px; right:30px; background:#0084ff; color:white; }
-.d4 { top:290px; left:30px; }
+.d1{top:60px;right:60px;}
+.d2{top:110px;left:60px;}
+.d3{top:160px;right:60px;}
+.d4{top:210px;left:60px;}
 
-/* Desktop Animations */
-.hostel-section.active .girl-enter { left:20%; }
-.hostel-section.active .girl-stand { opacity:1; }
-.hostel-section.active .d1 { opacity:1; transition-delay:3.5s; }
-.hostel-section.active .d2 { opacity:1; transition-delay:5.5s; }
-.hostel-section.active .d3 { opacity:1; transition-delay:7.5s; }
-.hostel-section.active .d4 { opacity:1; transition-delay:9.5s; }
+.hostel-section.active .girl-enter{
+animation:walkIn 3s forwards, moveToBag 2s forwards 12s;
+}
 
-/* ================= MOBILE FIX ================= */
+.hostel-section.active .girl-stand{
+animation:fadeIn 1s forwards 3s;
+}
 
+.hostel-section.active .d1{animation:fadeIn 1s forwards 4s;}
+.hostel-section.active .d2{animation:fadeIn 1s forwards 6s;}
+.hostel-section.active .d3{animation:fadeIn 1s forwards 8s;}
+.hostel-section.active .d4{animation:fadeIn 1s forwards 10s;}
+
+@keyframes walkIn{
+to{left:25%;}
+}
+
+@keyframes moveToBag{
+from{left:25%;}
+to{left:45%;}
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* MOBILE FIX */
 @media(max-width:768px){
 
-.container {
-    flex-direction: column !important;
-    gap: 20px;
+.container{
+flex-direction:column!important;
+gap:30px;
 }
 
-.photo-frame,
-.text {
-    width: 100%;
+.photo{
+width:100%;
+height:380px;
+object-fit:cover;
 }
 
-.photo {
-    height: 320px;
+.text{
+width:100%;
+text-align:center;
 }
 
-.section {
-    padding: 20px;
+.section{
+padding:40px 20px;
 }
 
-/* Proper Hostel Fix */
-.hostel-section {
-    display: block;
-    min-height: auto;
-    padding: 80px 20px 60px 20px;
+.room{
+height:420px;
 }
 
-.hostel-heading {
-    position: static;
-    margin-bottom: 25px;
-    opacity: 1 !important;
-    font-size: 28px;
+.girl-enter{
+font-size:50px;
+left:-80px;
 }
 
-.room {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-    padding: 30px 15px;
-    border-radius: 25px;
+.girl-stand{
+font-size:50px;
+right:20px;
 }
 
-.floor { display:none; }
-
-.luggage,
-.girl-enter,
-.girl-stand {
-    position: static !important;
-    transform: none !important;
-    text-align: center;
-    margin: 12px 0;
-    opacity: 1 !important;
+.luggage{
+font-size:40px;
 }
 
-.dialogue {
-    position: static !important;
-    display: block;
-    margin: 12px auto;
-    opacity: 1 !important;
-    max-width: 95%;
-    font-size: 13px;
-    padding: 12px 16px;
-    transition: none;
+.d1{top:40px;right:20px;}
+.d2{top:90px;left:20px;}
+.d3{top:140px;right:20px;}
+.d4{top:190px;left:20px;}
+
+.hostel-title h1{
+font-size:1.8rem;
 }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
 <section class="section intro">
 <div>
-<h1 style="margin-bottom:10px;">Happy Birthday Pooja 🤍</h1>
-<p style="text-align:center; color:#888;">A SCROLLABLE JOURNEY OF US</p>
+<h1>Happy Birthday Pooja 💖</h1>
+<p>
+May your smile never fade,<br>
+and may every dream find its way to you ✨<br><br>
+Scroll down
+</p>
 </div>
 </section>
 
+<!-- PHOTO SECTIONS -->
 <script>
 const messages=[
-"07-02-2026 — Lulu Mall 🛍️✨ The day we searched for the birthday dress, tried many options, laughed at the wrong ones, and finally found the one 💖",
+"07-02-2026 — Lulu Mall 🛍️✨ The day we searched for the birthday dress,tried a many options, laughed at the wrong ones, and finally found the one💖",
 "Back to our BCA days 📚✨ This was taken in our classroom — where lectures felt long, but memories were made effortlessly 💕",
 "This was taken when we were celebrating Black color day in Japan Park",
 "You always show up when it truly matters 💕",
-"You are so lucky to get me as your friend 😉",
-"This one when me, you and Ranjitha bought same top for our twinning day",
+"You are so lucky to get me as your friend 😉 ",
+"This one , when me , you and Ranjitha bought same top for our twinning day",
 "You truly value relationships 🤍",
 "You make friendships feel easy and real ✨",
 "This one when we went to Himavad Gopalaswamy Hills during Suchitra's birthday without her and got scolded by watchman uncle 💕",
-"You hold people together 🌷",
-"This one when we went to Honnavara Trip, during boat ride 💖",
+"You hold people together🌷",
+"This one when we went to Honnavara Trip , during boat ride 💖",
 "This one during our last Ethnic day",
 "You deserve the best in everything, like me 😉",
-"This one when we went to Mysore like few days before my birthday and you gave a handmade card to me, I as usual created some issues",
-"This one was taken during Mysore Dasara, in the Flower show in 2024 😊",
-"This one when we went to Mall of Mysore",
-"I think this one was taken when we met in Bangalore (Forum South Mall) for the first time after coming from Mysore",
+"This one when we went to Mall of Mysore like few days before my birthday and you gave a handmade card to me , i as usual created some issues",
+"This one was taken during Mysore Dasara , in the Flower show in 2024😊",
+"🤍",
+"I think this one was taken , when we met in Bangalore for the first time after coming from Mysore",
 "You always try your best for everyone 🌸",
 "This photo was taken by me on your birthday at Lulu Mall",
 "🤍",
-"This one, your fav saree of mine and it suited very well on you ✨",
-"This one was taken when we went to MAD 2 movies along with Ranjitha and Jeevitha at Jayanagar 💕",
-"This one was taken when we were going to Mysore for Dasara from Bangalore - 2025 🌸",
+"This one , your fav saree of mine and it suited very well on you✨",
+"This one was taken when we went to MAD 2 movies along with Ranjitha and Jeevitha at Jayanagar💕",
+"This one was taken when we were going to Mysore for Dasara from Bangalore - 2025🌸",
 "Your Fav Gang",
 "💖"
 ];
 
 for(let i=1;i<=25;i++){
 let reverseClass=i%2===0?"reverse":"";
-let specialClass=(i===24 || i===25)?"full-photo":"";
-
 document.write(`
 <section class="section">
 <div class="container ${reverseClass}">
-<div class="photo-frame">
-<img src="p${i}.jpeg" class="photo ${specialClass}">
-</div>
+<img src="p${i}.jpeg" class="photo">
 <div class="text"><p>${messages[i-1]}</p></div>
 </div>
 </section>
@@ -351,12 +326,17 @@ document.write(`
 }
 </script>
 
+<!-- HOSTEL STORY -->
 <section class="hostel-section">
-<h1 id="hostel-h1" class="hostel-heading">How this started</h1>
+<div class="hostel-title">
+<h1>How this started</h1>
+</div>
 
 <div class="room">
 <div class="floor"></div>
+
 <div class="luggage">🧳</div>
+
 <div class="girl-enter">👩‍🦰</div>
 <div class="girl-stand">👩</div>
 
@@ -364,22 +344,25 @@ document.write(`
 <div class="dialogue d2">hu…</div>
 <div class="dialogue d3">naanu BCA ne Pratheeksha akka helidru obru bartare nan friend tangi anta so kelde neeve na anta</div>
 <div class="dialogue d4">hwda sari…</div>
+
 </div>
 </section>
 
+<!-- FINAL -->
 <section class="section final">
 <div>
-<h1>Happy Birthday 🤍</h1>
-<p>May this year be calm, kind and full of beautiful memories.</p>
+<h1>HAPPY BIRTHDAY 🤍</h1>
+<p>May this year bring you endless happiness, success, and beautiful memories 💕</p>
 </div>
 </section>
 
 <script>
 const sections=document.querySelectorAll('.section');
+
 function revealOnScroll(){
 sections.forEach(section=>{
 const rect=section.getBoundingClientRect();
-if(rect.top<window.innerHeight-150){
+if(rect.top<window.innerHeight-100){
 section.classList.add('show');
 }
 });
@@ -388,32 +371,14 @@ window.addEventListener('scroll',revealOnScroll);
 revealOnScroll();
 
 const hostelSection=document.querySelector('.hostel-section');
-const hostelH1=document.getElementById('hostel-h1');
 const observer=new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 hostelSection.classList.add('active');
-hostelH1.style.opacity="1";
 }
 });
 },{threshold:0.6});
 observer.observe(hostelSection);
-
-document.addEventListener('mousemove', (e) => {
-const trail=document.createElement('div');
-trail.className='sparkle';
-trail.style.left=e.pageX+'px';
-trail.style.top=e.pageY+'px';
-const size=Math.random()*6+2;
-trail.style.width=size+'px';
-trail.style.height=size+'px';
-document.body.appendChild(trail);
-setTimeout(()=>{
-trail.style.opacity='0';
-trail.style.transform='translateY(20px) scale(0)';
-setTimeout(()=>trail.remove(),500);
-},100);
-});
 </script>
 
 </body>
